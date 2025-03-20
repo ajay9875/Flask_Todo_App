@@ -63,8 +63,8 @@
         <br>
     </div>
     <!-- Session Timer -->
-     {% if remaining_time < 300 %}
-         <div id="session-timer" style="font-weight: bold"></div>
+    {% if remaining_time is defined and remaining_time | int < 300 %}  
+        <div id="session-timer" style=" margin: 5px 0px 5px 20px; font-weight: bold"></div>
      {% endif %}
     <div class="message">
         {% with messages = get_flashed_messages(with_categories=True) %}
