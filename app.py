@@ -106,7 +106,7 @@ def login():
             session['username'] = user.name
             session.permanent = True  # Enable session expiration
             
-            expiry_time = datetime.now() + timedelta(minutes=15)  # Set session expiry time
+            expiry_time = datetime.now() + timedelta(minutes=6)  # Set session expiry time
             session['session_expiry'] = expiry_time.timestamp()  # Store expiry time as timestamp
             
             flash("Login successful!", "success")
