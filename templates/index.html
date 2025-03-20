@@ -30,12 +30,12 @@
                     <li class="nav-item">
                         <a class="nav-link active active" href="#">About</a>
                     </li>
-                        <li class="nav-item">
-                        <!-- Session Timer -->
-                            {% if remaining_time %}
+                       <!-- <li class="nav-item">
+                            {% if remaining_time  %}
                                 <div id="session-timer" style="margin: 8px 20px; font-weight: bold;"></div>
                             {% endif %}
                         </li>
+                       -->
                     <nav class="Theme-btn">
                         <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
                     </nav>
@@ -63,7 +63,7 @@
         <br>
     </div>
     <!-- Session Timer -->
-    {% if remaining_time | int < 300 %}  
+    {% if remaining_time %}  
         <div id="session-timer" style=" margin: 5px 0px 5px 20px; font-weight: bold"></div>
      {% endif %}
     <div class="message">
@@ -149,15 +149,14 @@
 
                 timerElement.innerText = `Session expires in ${minutes}m ${seconds}s`;
                 
-                // Change color dynamically when < 5 minutes
-                if (remainingTime < 300) { // 5 minutes = 300 seconds
-                    timerElement.style.color = "red";
-                } 
-                else {
-                    timerElement.style.color = "black";
-                    timerElement.style.display = "none";
+                if (remainingTime < 300) { // If less than 5 minutes
+                    timerElement.style.color = "red"; // Change color to red
+                    timerElement.style.display = "block"; // Show timer
+                } else { // If 5 minutes or more
+                    timerElement.style.display = "none"; // Hide timer
+                    timerElement.style.color = "red"; // Change color to red
                 }
-    
+                
                 remainingTime--;
                 setTimeout(updateTimer, 1000);
             } else {
