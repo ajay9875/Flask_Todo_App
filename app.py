@@ -45,6 +45,10 @@ class Todo(db.Model):
 def shutdown_session(exception=None):
     db.session.remove()
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404  # Show custom 404 page
+
 @app.route('/')
 def default():
     if 'user_id' not in session:
