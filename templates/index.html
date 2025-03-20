@@ -140,20 +140,22 @@
 
     <script>
         let remainingTime = {{ remaining_time }}; // Get session time from Flask
-    
         function updateTimer() {
             let timerElement = document.getElementById("session-timer");
     
             if (remainingTime > 0) {
                 let minutes = Math.floor(remainingTime / 60);
                 let seconds = remainingTime % 60;
+
                 timerElement.innerText = `Session expires in ${minutes}m ${seconds}s`;
-    
+                
                 // Change color dynamically when < 5 minutes
                 if (remainingTime < 300) { // 5 minutes = 300 seconds
                     timerElement.style.color = "red";
-                } else {
+                } 
+                else {
                     timerElement.style.color = "black";
+                    timerElement.style.display = "none";
                 }
     
                 remainingTime--;
